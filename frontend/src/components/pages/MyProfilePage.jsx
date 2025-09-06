@@ -136,7 +136,7 @@ const MyProfilePage = () => {
     if (loading && !user) return <Spinner />;
     // 決定顯示哪個頭像: 預覽 > 已有頭像 > 預設圖示
     const displayAvatar = () => {
-        const backendUrl = `http://192.168.0.170:5000`; // 後端 URL
+        const backendUrl = 'YOUR_BACKEND_URL_HERE' || 'http://localhost:5000'; // 後端 URL
         if (avatarPreview) {
             return <img src={avatarPreview} alt="Preview" className="profile-avatar-large"/>;
         }

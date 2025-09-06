@@ -80,7 +80,7 @@ const UserProfileDropdown = ({ onLinkClick }) => {
     };
 
     const displayAvatar = () => {
-    const backendUrl = 'http://192.168.0.170:5000'; // 確保這個 URL 正確
+    const backendUrl = 'YOUR_BACKEND_URL_HERE' || 'http://localhost:5000'; // 確保這個 URL 正確
         
         // 如果 user 存在且有 avatar_url，就顯示圖片
         if (user?.avatar_url) {
