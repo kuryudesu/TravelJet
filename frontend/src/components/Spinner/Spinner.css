@@ -1,0 +1,47 @@
+/* .spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #0d6efd;
+  animation: spin 2s ease-infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+/* .spinner {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: s1 1s infinite;
+  align-items: center;
+  margin: auto;
+}
+@keyframes s1 {to{transform: rotate(.5turn)}} */
+
+.spinner {
+  width: clamp(35px, 8vw, 60px);
+  border-width: clamp(4px, 1vw, 8px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border-style: solid; /* 將 style 抽離出來 */
+  border-color: #333 #0000; /* 用一個深灰色代替純黑，看起來更柔和 */
+  animation: s1 1s infinite linear; /* 添加 linear timing function 讓旋轉更均勻 */
+  margin: 40px auto; /* 增加垂直邊距 */
+}
+
+@keyframes s1 {
+  to {
+    transform: rotate(.5turn); /* 旋轉一整圈 (360度) 更流暢 */
+  }
+}

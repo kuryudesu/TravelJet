@@ -1,0 +1,53 @@
+/* client/src/index.css */
+
+/* --- 導入 Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- CSS 變數 --- */
+:root {
+  --primary-color: #0d6efd;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+  --text-color: #f0f0f0;
+  --text-color-dark: #e0e0e0;
+}
+
+/* --- 全域設定 --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* 防止背景動畫導致水平滾動條 */
+}
+
+/* --- 動態漸層背景 --- */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  position: relative; /* 為了 footer 能固定在底部 */
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- 主要內容區塊 --- */
+main {
+  flex-grow: 1; /* 讓 main 區塊填滿剩餘空間 */
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+ 
+.main-content{
+  flex: 1 0 auto;
+}

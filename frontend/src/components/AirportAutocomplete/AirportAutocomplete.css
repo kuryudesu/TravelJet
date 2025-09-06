@@ -1,0 +1,101 @@
+/* client/src/components/AirportAutocomplete.css */
+
+.autocomplete-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* 建議列表 (桌面版) */
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* 增加圓角 */
+  list-style-type: none;
+  margin: 8px 0 0;
+  padding: 5px 0; /* 增加上下 padding */
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1010; /* 比 Navbar 低，比其他內容高 */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: left; /* 確保文字靠左 */
+}
+
+.suggestions-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 移除 border-bottom，改用 padding 創造間隔感 */
+}
+
+.suggestions-list li:hover {
+  background-color: #f8f9fa; /* 使用更柔和的懸停顏色 */
+}
+
+.highlight {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.suggestion-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-name {
+  font-weight: 500;
+  color: #212529;
+}
+
+.suggestion-location {
+  font-size: 0.85em; /* 稍微加大字體 */
+  color: #6c757d;
+}
+
+.suggestion-iata {
+  font-weight: 700;
+  color: #0d6efd;
+  background-color: #e7f1ff;
+  padding: 3px 8px; /* 增加 padding */
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 768px (平板和手機) --- */
+@media (max-width: 768px) {
+  .suggestions-list {
+    /* 在手機上，讓列表可以稍微超出父容器寬度 */
+    position: absolute; /* 使用 fixed 定位，使其相對於 viewport */
+    left: 10px;      /* 距離螢幕左邊緣 10px */
+    right: 10px;     /* 距離螢幕右邊緣 10px */
+    width: auto;     /* 寬度自動計算 */
+    max-height: 50vh; /* 最大高度可以是螢幕可見區域的一半 */
+  }
+
+  /* 調整手機上建議項的字體和 padding */
+  .suggestions-list li {
+    padding: 12px 15px;
+  }
+  .suggestion-name {
+    font-size: 1rem;
+  }
+}

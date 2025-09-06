@@ -1,0 +1,173 @@
+/* client/src/pages/SupportPage.css */
+
+.support-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    flex: 1 1;
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.support-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.support-header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.support-header p {
+    font-size: 1.1em;
+    color: #727272;
+}
+
+.support-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* FAQ 區塊佔 2/3，聯絡區塊佔 1/3 */
+    gap: 40px;
+}
+
+.faq-section h2, .contact-section h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* 確保內容不會超出圓角 */
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.faq-question:hover {
+    background-color: #e9ecef;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+.faq-question.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0; /* 預設收合 */
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 平滑的展開/收合動畫 */
+}
+.faq-question.active + .faq-answer {
+    max-height: 200px; /* 展開時的高度，確保足夠容納內容 */
+}
+
+.faq-answer p {
+    padding: 20px;
+    margin: 0;
+    line-height: 1.6;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: var(--glass-border);
+    color: #555;
+    border-top: 1px solid #e0e0e0;
+}
+
+
+/* --- 聯絡區塊 --- */
+.contact-section p {
+    color: #727272;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: var(--glass-border);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.contact-method:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.contact-icon {
+    font-size: 1.8em;
+    color: #0d6efd;
+}
+.contact-method h4 {
+    margin: 0 0 5px;
+    font-size: 1em;
+    color: #333;
+}
+.contact-method a, .contact-method span {
+    color: #555;
+    text-decoration: none;
+}
+.contact-method a:hover {
+    text-decoration: underline;
+}
+
+/* --- RWD --- */
+@media (max-width: 768px) {
+    .support-content {
+        grid-template-columns: 1fr; /* 手機上垂直堆疊 */
+    }
+    .support-header h1 {
+        font-size: 2em;
+    }
+    .faq-section h2, .contact-section h2 {
+        text-align: center;
+    }
+}

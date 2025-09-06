@@ -1,0 +1,209 @@
+.dashboard-home {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-banner {
+    background: linear-gradient(135deg, var(--primary-color), rgba(0, 0, 0, 0.05));
+    color: #333;
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner h2 {
+    margin: 0 0 5px 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.welcome-banner p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.stat-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.stat-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+.stat-info a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.stat-info a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.upcoming-trip-section {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.upcoming-trip-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.upcoming-trip-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.trip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.trip-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
+}
+
+.location { text-align: center; }
+.location .airport-code { font-size: 2.5rem; font-weight: 600; color: var(--heading-color); margin: 0; }
+.location .airport-name { font-size: 0.9rem; color: #777; margin: 0; }
+.location .time  {font-size: 1.1em; color: #555;}
+.flight-path {
+    flex-grow: 1;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    position: relative;
+    margin: 0 20px;
+}
+
+.flight-path::before {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, #ccc 50%, transparent 50%);
+    background-size: 10px 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.trip-footer {
+    padding: 15px;
+    text-align: right;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.details-button {
+    background-color: #333;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.details-button:hover { background-color: var(--primary-color);}
+
+.no-upcoming-trip { text-align: center; padding: 40px 20px; border: 2px dashed #e0e0e0; border-radius: 8px; }
+.no-upcoming-trip p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+.book-now-button { background-color: var(--primary-color); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: background-color 0.2s, transform 0.2s; display: inline-block; }
+.book-now-button:hover { background-color: var(--primary-color); transform: scale(1.05); }
+
+/* --- Responsive Design --- */
+@media (max-width: 576px) {
+    .welcome-banner {
+        padding: 20px;
+    }
+    .welcome-banner h2 {
+        font-size: 1.6rem;
+    }
+    .welcome-banner p {
+        font-size: 1rem;
+    }
+
+    .trip-body {
+        flex-direction: column;
+        padding: 25px 20px;
+    }
+
+    .flight-path {
+        margin: 25px 0;
+        transform: rotate(90deg); /* 旋轉飛機圖示 */
+    }
+
+    /* 將飛行路徑的虛線改為垂直 */
+    .flight-path::before {
+        width: 2px;
+        height: 120%; /* 稍微加長以確保連接 */
+        background-image: linear-gradient(to bottom, #ccc 50%, transparent 50%);
+        background-size: 2px 10px;
+        top: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .location .airport-code {
+        font-size: 2.2rem;
+    }
+}

@@ -1,0 +1,219 @@
+/* client/src/pages/MyProfilePage.css */
+
+.profile-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.7); /* 半透明玻璃效果 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+}
+
+.profile-avatar-large {
+    font-size: 5rem;
+    color: #ccc;
+    flex-shrink: 0;
+}
+
+.profile-header-info h1 {
+    margin: 0;
+    font-size: 2.2em;
+    color: #333;
+}
+.profile-header-info p {
+    margin: 5px 0 0;
+    font-size: 1.1em;
+    color: #6c757d;
+}
+
+.profile-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* 讓不同高度的卡片頂部對齊 */
+}
+
+.profile-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 25px;
+    flex: 1; /* 讓兩個卡片平分空間 */
+    background-color: rgba(255, 255, 255, 0.25); /*半透明白色背景*/
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3); /* 左側亮邊，增加玻璃質感 */
+}
+
+.profile-card h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0 0 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 複用 Form.css 的一些樣式，這裡可以寫一些覆蓋樣式 */
+.profile-card .form-group { margin-bottom: 15px; }
+.profile-card label { font-size: 0.9em; }
+.profile-card input {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+.profile-card .submit-button { padding: 10px; }
+
+
+/* Message styling */
+.message {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.avatar-message {
+    position: absolute;
+    text-align: center;
+    margin-top: 90px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.avatar-message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.avatar-message.error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* --- 頭像上傳器樣式 --- */
+.avatar-uploader {
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden; /* 確保疊加層也在圓形內 */
+}
+/* img 和 svg 都用同一個 class name */
+.profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover; /* 確保圖片不變形 */
+    display: block; /* 移除圖片底部的空隙 */
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.avatar-uploader:hover .avatar-overlay {
+    opacity: 1;
+}
+.avatar-overlay svg { font-size: 1.5rem; }
+.avatar-overlay span { font-size: 0.8rem; margin-top: 5px; }
+
+/* 小的上傳按鈕 */
+.profile-header-info .small-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+
+
+/* --- RWD --- */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .profile-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .profile-avatar-large {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover; /* 確保圖片不變形 */
+        display: block; /* 移除圖片底部的空隙 */
+    }
+    .avatar-message {
+        position: relative;
+        margin-top: 15px;
+    }
+}
+@media (max-width: 480px) {
+    .profile-page {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .profile-header {
+        padding: 20px;
+    }
+
+    .profile-header-info h1 {
+        font-size: 1.8em;
+    }
+
+    .profile-header-info p {
+        font-size: 1em;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-card h2 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,138 @@
+/* client/src/components/Footer.css */
+
+.footer-container {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  padding: 50px 40px 20px; /* 增加上下 padding */
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 允許在小螢幕上換行 */
+  gap: 40px; /* section 之間的間距 */
+  padding-bottom: 40px;
+}
+
+.footer-section {
+  flex: 1; /* 讓每個 section 自動分配空間 */
+  min-width: 220px; /* 確保每個 section 的最小寬度 */
+}
+
+.footer-logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  color: #a9a9b3;
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+.footer-section h4 {
+  font-size: 1.1em;
+  color: #ffffff;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* 標題下方的小底線裝飾 */
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #0d6efd; /* 使用我們的主題藍色 */
+}
+
+.footer-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #a9a9b3;
+  text-decoration: none;
+  transition: color 0.2s, padding-left 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 5px; /* 滑鼠懸停時輕微向右移動 */
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  color: #a9a9b3;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.social-icon svg {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #2c2c4d;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #a9a9b3;
+}
+
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 768px (平板和手機) --- */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 40px 20px 20px; /* 減少左右 padding */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-icon {
+        justify-content: center;
+    }
+}

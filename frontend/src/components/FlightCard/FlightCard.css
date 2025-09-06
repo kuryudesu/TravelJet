@@ -1,0 +1,183 @@
+/* client/src/components/FlightCard/FlightCard.css */
+
+.flight-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: var(--glass-border);
+}
+
+/* 為了讓多個結果看起來像一個群組，我們只在第一個和最後一個項目上應用圓角 */
+.flight-container:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.flight-container:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+
+.flight-container:not(:first-child) {
+  border-top: none;
+}
+
+.flight-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.flight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.flight-container:first-child .flight-card {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.flight-container:last-child .flight-card {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.airline-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 150px; /* 在桌面版保持最小寬度 */
+}
+
+.airline-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.flight-number {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1; /* 在桌面版佔用多餘空間 */
+  justify-content: center;
+}
+
+.airport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iata-code {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #111;
+}
+
+.time, .flight-day {
+  font-size: 1.1em;
+  color: #555;
+}
+
+.airport-name {
+  font-size: 0.8em;
+  color: #888;
+  width: 120px; /* 使用固定寬度代替 max-width，佈局更穩定 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-line {
+  font-size: 1.5em;
+  color: #0d6efd;
+  margin: 0 10px; /* 在航線圖示兩側增加一些間距 */
+}
+
+.booking-action {
+  min-width: 120px;
+  text-align: right;
+}
+
+.book-button {
+  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* 使用更現代的漸變色 */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 768px (平板和手機) --- */
+@media (max-width: 768px) {
+    .flight-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 25px;
+        padding: 15px;
+    }
+
+    .airline-info {
+        align-items: center;
+        min-width: unset;
+        text-align: center;
+    }
+
+    .route-info {
+        flex-grow: 0;
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    
+    .iata-code {
+        font-size: 1.3em;
+    }
+    
+    .airport-name {
+      width: 100px;
+    }
+    
+    .route-line {
+        margin: 0;
+    }
+
+    .booking-action {
+        min-width: unset;
+        text-align: center;
+        width: 100%;
+    }
+
+    .book-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,164 @@
+/* client/src/styles/Form.css */
+
+.form-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* 給予最小高度，讓表單在內容少的頁面也能居中 */
+    padding: 20px;
+}
+
+.form-container {
+  width: 100%; /* 在小螢幕上預設佔滿寬度 */
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box; /* 確保 padding 不會撑大寬度 */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #0b5ed7;
+}
+
+.submit-button:disabled {
+  background-color: #aab8c9;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.switch-form-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.switch-form-link a {
+  color: #0d6efd;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.switch-form-link a:hover {
+  text-decoration: underline;
+}
+
+.password-input-container {
+  position: relative; /* 關鍵！讓眼睛圖示可以相對於這個容器定位 */
+}
+
+/* 為了讓圖示不與文字重疊，需要給 input 增加右邊的 padding */
+.password-input-container input {
+  padding-right: 40px; /* 給眼睛圖示留出空間 */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 60%; /* 粗略定位到垂直中間，可微調 */
+  right: 10px; /* 距離右邊框 10px */
+  transform: translateY(-50%);
+  
+  /* 按鈕樣式重置 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  /* 圖示樣式 */
+  color: #6c757d; /* 灰色 */
+  font-size: 1.5rem; /* 圖示大小 */
+  padding: 5px; /* 增加點擊區域 */
+  display: flex; /* 確保圖示居中 */
+  align-items: center;
+}
+.password-toggle-icon:hover {
+  color: #333; /* 懸停時變深色 */
+}
+
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 576px (典型手機斷點) --- */
+@media (max-width: 576px) {
+    .form-page-container {
+        /* 在手機上，讓容器從頁面頂部開始，而不是垂直居中 */
+        align-items: flex-start; 
+    }
+    
+    .form-container {
+        margin: 20px auto;      /* 減少上下外邊距 */
+        padding: 20px;          /* 減少內部填充 */
+        box-shadow: none;       /* 在手機上可以移除陰影，使其與背景融為一體，感覺更像原生app */
+        border: 1px solid #eee; /* 用一個輕微的邊框代替陰影 */
+    }
+
+    .form-container h1 {
+        font-size: 1.8em; /* 稍微縮小標題 */
+    }
+    
+    .submit-button {
+        padding: 15px; /* 讓手機上的按鈕更高，更容易點擊 */
+        font-size: 1em;
+    }
+}
+@media (min-width: 0px) { /* 應用於所有尺寸 */
+    .password-toggle-icon {
+        top: 68%; /* 這個值可能需要根據你的 label 行高微調 */
+    }
+}

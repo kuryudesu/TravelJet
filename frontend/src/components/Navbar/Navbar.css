@@ -1,0 +1,202 @@
+/* client/src/components/Navbar.css */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030; /* 比其他元素高 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.7); /* 半透明玻璃效果 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* 桌面版導航連結容器 */
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link, .nav-button {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.nav-button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: #0d6efd; /* 主題藍色 */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.nav-button:hover {
+    background-color: #0b5ed7;
+}
+
+/* 漢堡選單按鈕 - 桌面版隱藏 */
+.hamburger-menu {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+}
+
+/* ===========================
+   RWD and Mobile Menu Styles (全新玻璃風格)
+   =========================== */
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 背景使用輕微的半透明黑色，增強深度感 */
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1010; /* 層級低於選單本身 */
+
+    /* 動畫效果：淡入 */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0; /* 從右側滑出 */
+    width: 80%; /* 寬度為螢幕的 80% */
+    max-width: 320px; /* 最大寬度，避免在平板上過寬 */
+    height: 100vh;
+    
+    /* 玻璃效果的核心 */
+    background-color: rgba(255, 255, 255, 0.25); /*半透明白色背景*/
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3); /* 左側亮邊，增加玻璃質感 */
+    
+    z-index: 1020; /* 層級高於遮罩 */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+
+    /* 動畫效果：從右側滑入 */
+    animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 行動版選單中的連結和按鈕 */
+.mobile-menu .nav-link,
+.mobile-menu .nav-button {
+    width: 90%;
+    max-width: 280px;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.2rem; /* 稍微調整字體大小以適應按鈕 */
+    padding: 16px;
+    border-radius: 20px; /* 更大的圓角 */
+
+    /* 液態玻璃效果的核心 */
+    background: rgba(255, 255, 255, 0.3); /* 稍微不透明的背景 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        5px 5px 15px rgba(0, 0, 0, 0.1), /* 暗部陰影 (右下) */
+        -5px -5px 15px rgba(255, 255, 255, 0.8); /* 亮部陰影 (左上) */
+    
+    transition: all 0.2s ease-in-out;
+    color: #2c3e50; /* 使用更柔和的深色文字 */
+}
+
+/* 移除預設按鈕背景 */
+.mobile-menu .nav-button {
+    background-image: none;
+    background-color: transparent; /* 確保背景和 nav-link 一樣 */
+    color: #2c3e50; /* 統一文字顏色 */
+}
+
+/* 滑鼠懸停和點擊時的“按壓”效果 */
+.mobile-menu .nav-link:hover,
+.mobile-menu .nav-button:hover,
+.mobile-menu .nav-link:active,
+.mobile-menu .nav-button:active {
+    /* 反轉陰影，創造凹陷感 */
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.1), 
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+    transform: scale(0.98); /* 輕微縮小，增強按壓感 */
+}
+.mobile-menu .nav-button {
+    background-color: #0d6efd;
+    color: white;
+}
+.mobile-menu .nav-button:hover {
+    background-color: #0b5ed7;
+}
+
+
+/* --- 動畫關鍵影格 (Animations) --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideInFromRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+
+/* --- 控制 body 滾動 --- */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+
+/* --- 媒體查詢：僅用於切換桌面/行動版佈局 --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    /* 隱藏桌面版連結 */
+    .navbar-links.desktop-links {
+        display: none;
+    }
+
+    /* 顯示漢堡選單按鈕 */
+    .hamburger-menu {
+        display: block;
+    }
+}

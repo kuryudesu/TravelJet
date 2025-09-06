@@ -1,0 +1,361 @@
+/* client/src/pages/HomePageV2.css */
+:root {
+    --primary-blue: #0d6efd;
+    --light-gray: #f8f9fa;
+    --text-color: #333;
+    --text-muted: #6c757d;
+    --glass-bg: rgba(255, 255, 255, 0.7); /* 半透明背景，適用於玻璃效果 */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-section {
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80'); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('..//assets/photo-1500835556837-99ac94a94552.webp');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 12px;
+  text-align: center;
+  color: white;
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+.new-homepage-container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    margin-top: -60px; /* 將會隨 RWD 調整 */
+    position: relative;
+    z-index: 10;
+}
+
+.search-widget-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: var(--glass-border);
+  padding: 30px;
+}
+
+.trip-type-tabs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.trip-type-tabs button {
+    background: none;
+    border: none;
+    font-size: 1.1em;
+    padding: 10px 0;
+    cursor: pointer;
+    color: var(--text-color); /* 在半透明背景上，純白字可能看不清，改為深色 */
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.trip-type-tabs button.active {
+    color: var(--primary-blue);
+    font-weight: 700;
+    border-bottom-color: var(--primary-blue);
+}
+
+.search-fields-grid {
+    display: grid;
+    /* 桌面版：4 欄 */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background-color: rgba(233, 236, 239, 0.7); /* 輕微透明 */
+    border: 1px solid rgba(233, 236, 239, 0.7);
+    border-radius: 8px;
+}
+
+.search-fields-grid.one-way-trip {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.return-date-field {
+    border-left: 1px solid #e9ecef;
+}
+
+.form-field {
+    background-color: white;
+    padding: 15px;
+    position: relative;
+}
+
+
+
+.form-field label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.form-field label svg {
+    margin-right: 8px;
+}
+
+/* 確保 Passenger Display 有樣式 */
+.form-field .airport-autocomplete-wrapper, 
+.form-field input[type="date"],
+.form-field .passengers-display {
+    width: 100%;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 0;
+}
+.form-field .airport-autocomplete-wrapper input {
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit; /* 繼承顏色 */
+}
+.form-field .airport-autocomplete-wrapper input:focus,
+.form-field input[type="date"]:focus {
+    outline: none;
+}
+
+.swap-btn-container {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translate(50%, -50%);
+    z-index: 10;
+}
+.swap-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e9ecef;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+.swap-btn:hover {
+    transform: scale(1.1);
+}
+
+.search-button-wrapper {
+    margin-top: 25px;
+    text-align: center;
+}
+.search-button-v2 {
+    padding: 15px 50px;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.search-button-v2:hover {
+    transform: scale(1.03);
+}
+
+.results-section-v2 {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+.homeImages {
+  width: 50%;
+  max-width: 1000px;
+  margin: 5px auto; /* 與上下內容的間距 */
+  
+  /*  關鍵 1: 設置相對定位 */
+  /* 這是讓 .plane 的 position: absolute 生效的基礎 */
+  position: relative; 
+  
+  display: flex; /* 使用 flex 佈局 */
+  justify-content: center;
+  align-items: center;
+}
+
+.videoDiv {
+  width: 100%;
+  border-radius: 10rem; /* 適中的圓角 */
+  
+  /*  關鍵 2: 隱藏超出邊界的內容 */
+  /* 這樣影片就會被限制在圓角容器內 */
+  overflow: hidden; 
+  
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* 添加陰影增加立體感 */
+}
+
+.videoDiv .video {
+  width: 100%;
+  height: auto;
+  display: block; /* 移除 video 標籤底部的默認空隙 */
+}
+
+.plane {
+  /*  關鍵 3: 絕對定位，使其浮在影片之上 */
+  position: absolute;
+  top: -36%;
+  width: 100%; /* 飛機的寬度是其容器(.homeImages)寬度的50% */
+  
+  /* 使用動畫讓飛機移動，比固定的 top/left 更生動
+  /* 這裡的 translate 數值可以微調，以改變飛機的位置 */
+  animation: plane-float 6s ease-in-out infinite;
+}
+
+
+/*--- 飛機浮動動畫 ---*/
+@keyframes plane-float {
+  0% {
+    transform: translate(-5%, -5%);
+  }
+  50% {
+    transform: translate(5%, 5%);
+  }
+  100% {
+    transform: translate(-5%, -5%);
+  }
+}
+
+
+
+
+
+
+/* =================================================================
+   RWD - 響應式設計 (Responsive Web Design)
+   ================================================================= */
+
+/* --- 平板電腦 & 大型手機 (Tablet & Large Phones) --- */
+@media (max-width: 992px) {
+    .search-fields-grid {
+        /* 從4欄變為2欄 */
+        grid-template-columns: 1fr 1fr;
+    }
+        .search-fields-grid.one-way-trip {
+        grid-template-columns: 1fr 1fr; /* From, To 在第一行 */
+    }
+    /* 讓第三個元素（出發日期）跨越兩欄 */
+    .search-fields-grid.one-way-trip .form-field:nth-child(3) {
+        grid-column: span 2;
+    }
+    .homeImages {
+        width: 70%;
+    }
+    .plane {
+        position: absolute;
+        top: -20%;
+        width: 100%;
+    }
+}
+
+/* --- 手機 (Mobile) --- */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 20px;
+    }
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+    .new-homepage-container {
+        margin-top: -40px; /* 減少重疊 */
+    }
+
+    .search-widget-card {
+        padding: 20px;
+    }
+
+    .search-fields-grid {
+        /* 完全垂直堆疊 */
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* 使用 gap 代替 border 模擬的分隔線 */
+        background-color: transparent;
+        border: none;
+    }
+
+    .form-field {
+        /* 為每個欄位單獨添加樣式 */
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+    
+    /* 移除日期選擇器的中間分隔線 */
+    .form-field:first-child {
+        border-right: none;
+    }
+    
+    /*START: SWAP BUTTON RWD CHANGES*/
+
+    /* 1. 為 Departure 欄位增加底部空間，以容納移出的按鈕 */
+    .form-field:has(.swap-btn-container) {
+        padding-bottom: 30px;
+    }
+
+    /* 2. 重新定位交換按鈕的容器 */
+    .swap-btn-container {
+      top: unset; /* 取消頂部定位 */
+      right: unset; /* 取消右側定位 */
+      bottom: 0; /* 定位到父元素的底部 */
+      left: 50%; /* 定位到父元素的中線 */
+      
+      /* 將按鈕移動到父元素的下邊框中心 */
+      transform: translate(-50%, 50%); 
+      
+      /* 3. 放大按鈕尺寸 */
+      width: 40px;
+      height: 40px;
+    }
+
+    /* 4. 同步按鈕本身的尺寸 */
+    .swap-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1em; /* 讓圖示也變大一點 */
+    }
+
+    /* 堆疊日期選擇器 */
+    .form-field-double {
+        flex-direction: column;
+    }
+    .form-field-double .form-field:first-child {
+      border-bottom: 1px solid #e9ecef; /* 將分隔線改為底部 */
+    }
+
+    .homeImages {
+        margin: 0 auto; /* 減少手機上的垂直間距 */
+        border-radius: 2rem; /* 稍微減小圓角 */
+    }
+
+    .videoDiv {
+        border-radius: 10rem;
+    }
+    
+    .plane {
+        position: absolute;
+        top: -36%;
+        width: 110%; /* 在手機上，可以讓飛機稍微大一點，視覺效果更好 */
+    }
+}

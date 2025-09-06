@@ -1,0 +1,109 @@
+/* 假設這份 CSS 用於某個 InfoPage.css 檔案 */
+
+.info-page-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  line-height: 1.6;
+
+  /* 玻璃效果 */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* 建議使用 border 而非 border-bottom 來營造更完整的玻璃邊框感 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px; /* 增加圓角以配合玻璃效果 */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  /* 文字顏色 */
+  color: #333; /* 確保在半透明背景上有足夠的對比度 */
+}
+
+.info-page-container h1 {
+  color: #0056b3;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.2em; /* 明確指定字體大小 */
+}
+
+.info-section {
+  margin-bottom: 2rem;
+}
+
+.info-section h2 {
+  color: #0069d9;
+  border-bottom: 2px solid #e0e7ff; /* 使用一個更柔和的藍色調邊框 */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5em; /* 明確指定字體大小 */
+}
+
+.info-page-container ul {
+  list-style-type: disc;
+  padding-left: 25px; /* 稍微增加內縮 */
+}
+
+.info-page-container li {
+  margin-bottom: 0.75rem; /* 稍微增加列表項間距 */
+}
+
+.info-page-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500; /* 讓連結文字稍微加粗 */
+}
+
+.info-page-container a:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 768px (平板和手機) --- */
+@media (max-width: 768px) {
+  .info-page-container {
+    margin: 1.5rem auto; /* 減少上下外邊距 */
+    padding: 1.5rem;     /* 減少內部填充 */
+    text-align: center;
+  }
+
+  .info-page-container h1 {
+    font-size: 1.8em; /* 縮小主標題字體 */
+  }
+
+  .info-page-container ul {
+    padding-left: 15px; /* 減少列表內縮 */
+    display: table;
+    margin: 0 auto;
+  }
+
+  .info-page-container li {
+    margin-bottom: 0.5rem;/* 減少列表項間距 */
+  }
+
+  .info-section h2 {
+    font-size: 1.3em; /* 縮小次標題字體 */
+  }
+}
+
+
+/* --- 當螢幕寬度小於 480px (典型手機斷點) --- */
+@media (max-width: 480px) {
+    .info-page-container {
+        margin: 1rem;       /* 左右也使用邊距，而不是 auto，讓它不完全貼邊 */
+        padding: 1rem;      /* 進一步減少內部填充 */
+        border-radius: 8px; /* 減少圓角以適應更緊湊的佈局 */
+    }
+
+    .info-page-container h1 {
+        font-size: 1.6em;
+    }
+
+    .info-page-container ul {
+        padding-left: 20px; /* 減少列表內縮 */
+    }
+}

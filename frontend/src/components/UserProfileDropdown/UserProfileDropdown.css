@@ -1,0 +1,185 @@
+/* client/src/components/UserProfileDropdown.css */
+
+.profile-dropdown-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.profile-avatar-button {
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.profile-avatar-button:hover {
+    border-color: #0d6efd;
+}
+.profile-avatar-button svg {
+    font-size: 1.8em;
+    color: #6c757d;
+}
+
+.profile-avatar-button svg,
+.profile-avatar-button .avatar-image {
+    font-size: 1.8em;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    color: #6c757d;
+}
+
+/* --- 下拉選單樣式 (桌面版) --- */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 220px;
+    z-index: 1050;
+
+    /* 玻璃效果 */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    
+    padding: 5px 0;
+    animation: fadeInDown 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* 半透明邊框 */
+    margin-bottom: 5px;
+}
+.dropdown-header p {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.welcome-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0;
+}
+.username {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 2px 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li a,
+.dropdown-menu li button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.dropdown-menu li a:hover,
+.dropdown-menu li button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li a svg,
+.dropdown-menu li button svg {
+    font-size: 1.2em;
+    color: #6c757d;
+    transition: color 0.2s;
+}
+
+/* 登出按鈕 hover 時變紅色 */
+.dropdown-menu li button.logout-btn:hover {
+    color: #dc3545;
+}
+.dropdown-menu li button.logout-btn:hover svg {
+    color: #dc3545;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: rgba(0,0,0,0.08);
+    margin: 5px 0;
+}
+
+
+/* ==========================================================
+   RWD - 響應式設計 (Styles for smaller screens)
+   ========================================================== */
+
+/* --- 當螢幕寬度小於 480px (典型手機斷點) --- */
+@media (max-width: 480px) {
+    /* 假設這個下拉選單在手機上被觸發，我們希望它以更友好的方式展示 */
+    .dropdown-menu {
+        position: fixed;  /* 關鍵：改為 fixed 定位 */
+        top: 60px;       /* 距離 Navbar 下方一點距離 */
+        left: 15px;
+        right: 15px;
+        width: auto;     /* 寬度自動計算 */
+        
+        /* 動畫可以改為從頂部中心淡入 */
+        animation: fadeInScaleUp 0.3s ease-out;
+    }
+
+    .profile-avatar-button {
+        width: 60px;
+        height: 60px;
+    }
+    .profile-avatar-button svg {
+        font-size: 3.2em;
+        color: #6c757d;
+    }
+
+    .profile-avatar-button svg,
+    .profile-avatar-button .avatar-image {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    @keyframes fadeInScaleUp {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* 在手機上可以讓字體稍微大一點，方便點擊 */
+    .dropdown-menu li a,
+    .dropdown-menu li button {
+        font-size: 1.1em;
+        padding: 15px 20px;
+    }
+}
